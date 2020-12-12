@@ -1,3 +1,7 @@
+// Make sure you turn on "Automatically expose System Environment Variables" in the Vercel console here:
+// https://vercel.com/<username>/<app-name>/settings/environment-variables
+const isLocalDev = process.env.VERCEL_ENV !== "production" && process.env.VERCEL_ENV !== "preview";
+
 module.exports = {
   /**
    * The path to the `app` directory, relative to remix.config.js. Defaults to
@@ -5,7 +9,7 @@ module.exports = {
    * by Remix.
    *
    */
-  appDirectory: "app",
+  appDirectory: isLocalDev ? "app" : "app-build",
 
   /**
    * A hook for defining custom routes based on your own file conventions. This
@@ -55,10 +59,10 @@ module.exports = {
    * that are created from building your routes. They are used on the server to
    * generate HTML.
    */
-  serverBuildDirectory: "build/app",
+  serverBuildDirectory: "app-build",
 
   /**
    * The port to use when running `remix run`. Defaults to 8002.
    */
-  devServerPort: 8002
+  devServerPort: 8002,
 };

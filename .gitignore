@@ -19,6 +19,9 @@ loaders/**/*.js
 loaders/**/*.d.ts
 build
 data-build
+app-build
 public/build
 .cache
 yarn-error.log
+
+.vercel
